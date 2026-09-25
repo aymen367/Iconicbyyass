@@ -145,22 +145,43 @@ footer{border-top:1px solid var(--line);padding:35px 22px}
 </div>
 
 <script>
-let cart=[];
-function add(name,price){cart.push({name,price});document.getElementById('count').textContent=cart.length;alert(name+" ajouté au panier.");}
-function openCart(){document.getElementById('modal').classList.add('open');render();}
-function closeCart(){document.getElementById('modal').classList.remove('open');}
-function render(){
- const el=document.getElementById('cartitems');
- if(!cart.length){el.innerHTML="Votre panier est vide.";return}
- let total=cart.reduce((s,x)=>s+x.price,0);
- el.innerHTML=cart.map((x,i)=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee"><span>${x.name}</span><b>${x.price.toLocaleString()} DA</b></div>`).join("")+
- `<div style="display:flex;justify-content:space-between;padding-top:14px"><b>Total</b><b>${total.toLocaleString()} DA</b></div>`;
-}
 function submitOrder(e){
- e.preventDefault();
- if(!cart.length){alert("Ajoutez au moins un article.");return}
- alert("Votre demande est prête. Pour la version réelle, reliez ce formulaire à WhatsApp, Instagram, Google Sheets ou une base de données.");
+  e.preventDefault();
+
+  if(!cart.length){
+    alert("Ajoutez au moins un article.");
+    return;
+  }
+
+  const inputs = document.querySelectorAll(".form input");
+  const name = inputs[0].value;
+  const phone = inputs[1].value;
+  const wilaya = document.querySelector(".form select").value;
+  const address = inputs[2].value;
+  const note = document.querySelector(".form textarea").value;
+
+  let message = "🛍️ *Nouvelle commande - ICONIC Clothing*%0A%0A";
+
+  message += "👤 Nom : " + name + "%0A";
+  message += "📞 Téléphone : " + phone + "%0A";
+  message += "📍 Wilaya : " + wilaya + "%0A";
+  message += "🏠 Adresse : " + address + "%0A";
+  message += "📝 Taille / couleur / remarque : " + note + "%0A%0A";
+
+  message += "👕 *Produits :*%0A";
+
+  cart.forEach((item, index) => {
+    message += (index + 1) + ". " + item.name +
+               " — " + item.price.toLocaleString() + " DA%0A";
+  });
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  message += "%0A💰 *Total : " + total.toLocaleString() + " DA*";
+
+  const whatsapp = "213540922887";
+
+  window.location.href =
+    "https://wa.me/" + whatsapp + "?text=" + message;
 }
 </script>
-</body>
-</html>
