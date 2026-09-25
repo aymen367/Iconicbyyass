@@ -179,9 +179,15 @@ function submitOrder(e){
 
   message += "%0A💰 *Total : " + total.toLocaleString() + " DA*";
 
-  const whatsapp = "213540922887";
+const whatsapp = "213540922887";
 
-  window.location.href =
-    "https://wa.me/" + whatsapp + "?text=" + message;
+const whatsappMessage = encodeURIComponent(
+  message.replace(/%0A/g, "\n")
+);
+
+window.location.href =
+  "https://wa.me/" + whatsapp + "?text=" + whatsappMessage;
+
+
 }
 </script>
