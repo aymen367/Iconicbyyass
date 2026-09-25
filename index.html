@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICONIC — Clothing</title>
+<meta name="description" content="ICONIC Clothing — Style, simplicité et livraison dans les 58 wilayas.">
+<style>
+:root{
+  --bg:#faf9f7;--card:#fff;--ink:#171717;--muted:#777;
+  --line:#e8e5e1;--accent:#111;--soft:#f1eeeb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:rgba(250,249,247,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+.logo{font-family:Georgia,serif;letter-spacing:5px;font-size:25px}
+.logo small{display:block;font:9px Arial;letter-spacing:4px;text-align:center;margin-top:-4px}
+.navlinks{display:flex;gap:28px;font-size:14px}
+.navlinks a:hover{text-decoration:underline}
+.cart{border:1px solid #ccc;border-radius:999px;padding:9px 14px;background:white}
+.hero{max-width:1180px;margin:auto;padding:62px 22px 35px;display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}
+.kicker{text-transform:uppercase;letter-spacing:3px;font-size:11px;color:var(--muted);margin-bottom:15px}
+h1{font-family:Georgia,serif;font-size:clamp(44px,7vw,78px);font-weight:400;line-height:.98;margin-bottom:22px}
+.hero p{max-width:520px;color:#666;font-size:17px}
+.btn{display:inline-block;margin-top:28px;background:#111;color:#fff;padding:14px 23px;border-radius:2px;border:1px solid #111}
+.btn.light{background:#fff;color:#111;border-color:#ccc;margin-left:8px}
+.visual{min-height:440px;border-radius:3px;background:linear-gradient(145deg,#ded9d3,#f7f4f1);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.visual:before{content:"";position:absolute;width:260px;height:360px;background:#6f4c43;border-radius:42% 42% 10% 10%;transform:translateY(28px);box-shadow:0 25px 50px rgba(0,0,0,.16)}
+.visual:after{content:"ICONIC";position:absolute;bottom:24px;letter-spacing:7px;font:14px Georgia;color:#fff}
+.section{max-width:1180px;margin:auto;padding:65px 22px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;margin-bottom:25px}
+.section h2{font:400 34px Georgia,serif}
+.sectionhead span{color:var(--muted);font-size:13px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product{background:var(--card);border:1px solid var(--line);position:relative}
+.pimg{height:310px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pimg span{display:block;width:145px;height:215px;border-radius:48% 48% 8% 8%;box-shadow:0 18px 30px rgba(0,0,0,.13)}
+.t1{background:#6d4a40}.t2{background:#17212b}.t3{background:#ddd8d0}.t4{background:#5b6268}
+.product:nth-child(2) .pimg{background:#e8ecef}.product:nth-child(1) .pimg{background:#e8ded9}
+.product:nth-child(3) .pimg{background:#eee9e2}.product:nth-child(4) .pimg{background:#dedede}
+.info{padding:15px}.info h3{font-size:15px;font-weight:500}.price{margin-top:7px;font-weight:bold}
+.info button{width:100%;margin-top:12px;padding:10px;border:1px solid #ccc;background:#fff}
+.info button:hover{background:#111;color:#fff}
+.badge{position:absolute;top:12px;left:12px;background:#111;color:#fff;font-size:10px;padding:6px 9px;letter-spacing:1px;z-index:2}
+.banner{background:#171717;color:#fff;margin-top:10px}
+.bannerin{max-width:1180px;margin:auto;padding:38px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.banner h2{font:400 29px Georgia,serif}
+.banner p{color:#bbb;font-size:14px}
+.banner .btn{background:#fff;color:#111;margin-top:0}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature{padding:25px;border:1px solid var(--line);background:#fff}
+.feature b{display:block;margin-bottom:7px}.feature p{color:#777;font-size:14px}
+footer{border-top:1px solid var(--line);padding:35px 22px}
+.footerin{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:30px;color:#777;font-size:13px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:50;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}.modalbox{background:#fff;max-width:520px;width:100%;padding:28px;position:relative}
+.close{position:absolute;right:15px;top:10px;border:0;background:none;font-size:26px}
+.form{display:grid;gap:12px;margin-top:18px}.form input,.form select,.form textarea{padding:12px;border:1px solid #ddd;width:100%}.form button{padding:13px;background:#111;color:#fff;border:0}
+@media(max-width:800px){
+ .navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:40px}.visual{min-height:340px}
+ .products{grid-template-columns:repeat(2,1fr)}.pimg{height:240px}.features{grid-template-columns:1fr}
+ .bannerin,.footerin{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){.products{grid-template-columns:1fr 1fr}.pimg{height:205px}.visual{min-height:300px}h1{font-size:49px}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a class="logo" href="#">ICONIC<small>CLOTHING</small></a>
+    <div class="navlinks">
+      <a href="#shop">SHOP</a><a href="#about">ABOUT</a><a href="#delivery">DELIVERY</a><a href="#contact">CONTACT</a>
+    </div>
+    <button class="cart" onclick="openCart()">Panier (<span id="count">0</span>)</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="kicker">ICONIC — ALGERIA</div>
+    <h1>It's not about the brand.<br>It's about the style.</h1>
+    <p>Découvrez la collection ICONIC : des pièces pensées pour un style simple, moderne et élégant.</p>
+    <a class="btn" href="#shop">Découvrir la collection</a>
+    <a class="btn light" href="#delivery">Livraison 58 wilayas</a>
+  </div>
+  <div class="visual" aria-label="Présentation de la collection"></div>
+</section>
+
+<section class="section" id="shop">
+  <div class="sectionhead"><h2>New collection</h2><span>4 pièces sélectionnées</span></div>
+  <div class="products">
+    <article class="product"><div class="pimg"><i class="badge">NEW</i><span class="t1"></span></div><div class="info"><h3>ICONIC Set — Brown</h3><div class="price">4 900 DA</div><button onclick="add('ICONIC Set — Brown',4900)">Ajouter au panier</button></div></article>
+    <article class="product"><div class="pimg"><span class="t2"></span></div><div class="info"><h3>ICONIC Set — Black</h3><div class="price">4 900 DA</div><button onclick="add('ICONIC Set — Black',4900)">Ajouter au panier</button></div></article>
+    <article class="product"><div class="pimg"><i class="badge">NEW</i><span class="t3"></span></div><div class="info"><h3>ICONIC Essential</h3><div class="price">3 900 DA</div><button onclick="add('ICONIC Essential',3900)">Ajouter au panier</button></div></article>
+    <article class="product"><div class="pimg"><span class="t4"></span></div><div class="info"><h3>ICONIC Classic</h3><div class="price">4 500 DA</div><button onclick="add('ICONIC Classic',4500)">Ajouter au panier</button></div></article>
+  </div>
+</section>
+
+<section class="banner" id="delivery">
+  <div class="bannerin">
+    <div><h2>Livraison dans les 58 wilayas 🇩🇿</h2><p>Commandez en ligne et choisissez votre wilaya au moment du checkout.</p></div>
+    <button class="btn" onclick="openCart()">Commander maintenant</button>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="sectionhead"><h2>Why ICONIC?</h2><span>Simple. Clean. Yours.</span></div>
+  <div class="features">
+    <div class="feature"><b>Style contemporain</b><p>Une identité visuelle minimaliste inspirée de la mode actuelle.</p></div>
+    <div class="feature"><b>Livraison nationale</b><p>Service de livraison annoncé pour les 58 wilayas.</p></div>
+    <div class="feature"><b>Commande facile</b><p>Ajoutez vos articles puis envoyez votre commande avec vos coordonnées.</p></div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="sectionhead"><h2>Contact</h2></div>
+  <div class="features">
+    <div class="feature"><b>Instagram</b><p>@iconicbyyass</p></div>
+    <div class="feature"><b>Commandes</b><p>DM Instagram ou formulaire de commande.</p></div>
+    <div class="feature"><b>Retours</b><p>Ajoutez ici vos conditions réelles de retour et d'échange.</p></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="footerin"><span>© 2026 ICONIC Clothing</span><span>Instagram · Delivery 58 wilayas · Algeria</span></div></footer>
+
+<div class="modal" id="modal">
+ <div class="modalbox">
+  <button class="close" onclick="closeCart()">×</button>
+  <h2 style="font:400 30px Georgia,serif">Votre commande</h2>
+  <div id="cartitems" style="margin-top:15px;color:#555">Votre panier est vide.</div>
+  <form class="form" onsubmit="submitOrder(event)">
+    <input required placeholder="Nom et prénom">
+    <input required placeholder="Téléphone">
+    <select required><option value="">Choisir la wilaya</option><option>Alger</option><option>Bouira</option><option>Tizi Ouzou</option><option>Béjaïa</option><option>Blida</option><option>Oran</option><option>Constantine</option><option>Autre wilaya</option></select>
+    <input required placeholder="Adresse de livraison">
+    <textarea placeholder="Taille / couleur / remarque"></textarea>
+    <button type="submit">Envoyer la demande de commande</button>
+  </form>
+ </div>
+</div>
+
+<script>
+let cart=[];
+function add(name,price){cart.push({name,price});document.getElementById('count').textContent=cart.length;alert(name+" ajouté au panier.");}
+function openCart(){document.getElementById('modal').classList.add('open');render();}
+function closeCart(){document.getElementById('modal').classList.remove('open');}
+function render(){
+ const el=document.getElementById('cartitems');
+ if(!cart.length){el.innerHTML="Votre panier est vide.";return}
+ let total=cart.reduce((s,x)=>s+x.price,0);
+ el.innerHTML=cart.map((x,i)=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee"><span>${x.name}</span><b>${x.price.toLocaleString()} DA</b></div>`).join("")+
+ `<div style="display:flex;justify-content:space-between;padding-top:14px"><b>Total</b><b>${total.toLocaleString()} DA</b></div>`;
+}
+function submitOrder(e){
+ e.preventDefault();
+ if(!cart.length){alert("Ajoutez au moins un article.");return}
+ alert("Votre demande est prête. Pour la version réelle, reliez ce formulaire à WhatsApp, Instagram, Google Sheets ou une base de données.");
+}
+</script>
+</body>
+</html>
